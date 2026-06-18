@@ -1,0 +1,53 @@
+@use 'base/variables' as v;
+
+// ===========================
+// MIXIN: RESPONSIVE (mobile-first)
+// ===========================
+@mixin responsive($breakpoint) {
+    @if $breakpoint ==tablet {
+        @media (min-width: v.$tablet) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==desktop {
+        @media (min-width: v.$desktop) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==desktop-xl {
+        @media (min-width: v.$desktop-xl) {
+            @content;
+        }
+    }
+}
+
+// ===========================
+// MIXIN: FLEX CENTRADO
+// ===========================
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+
+// ===========================
+// MIXIN: TRANSICIÓN ESTÁNDAR
+// ===========================
+@mixin transition($props: all) {
+    transition: $props v.$transition-speed ease-in-out;
+}
+
+// ===========================
+// MIXIN: CARD HOVER (efecto al pasar el mouse)
+// ===========================
+@mixin card-hover {
+    @include transition(transform, box-shadow);
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+}

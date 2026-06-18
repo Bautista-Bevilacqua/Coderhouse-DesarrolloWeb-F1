@@ -1,0 +1,95 @@
+// ===========================
+// IMPORTS
+// ===========================
+@use 'sass:color';
+@use 'base/variables' as v;
+@use 'base/reset';
+@use 'mixins' as m;
+@use 'pages/home';
+@use 'pages/pilotos';
+@use 'pages/equipos';
+@use 'pages/circuitos';
+@use 'pages/contacto';
+
+// ===========================
+// ESTILOS GLOBALES
+// ===========================
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: v.$font-texto;
+    background-color: v.$negro-carbono;
+    color: v.$blanco;
+}
+
+h1,
+h2,
+h3,
+.navbar-brand,
+.btn {
+    font-family: v.$font-titulos;
+}
+
+// ===========================
+// NAVBAR
+// ===========================
+.navbar {
+    background-color: v.$negro-carbono !important;
+    border-bottom: 3px solid v.$rojo-f1;
+
+    .nav-link {
+        color: v.$blanco !important;
+        @include m.transition(color);
+
+        &:hover {
+            color: v.$rojo-f1 !important;
+        }
+
+        &.active {
+            color: v.$rojo-f1 !important;
+            font-weight: 700;
+        }
+    }
+
+    .navbar-brand {
+        color: v.$rojo-f1 !important;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+}
+
+// ===========================
+// FOOTER
+// ===========================
+.footer {
+    background-color: color.scale(v.$negro-carbono, $lightness: -3%);
+    border-top: 3px solid v.$rojo-f1;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: v.$gris-claro;
+}
+
+// ===========================
+// BOTONES
+// ===========================
+.btn-f1 {
+    background-color: v.$rojo-f1;
+    color: v.$blanco;
+    border: none;
+    border-radius: v.$radius;
+    padding: 0.6rem 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    @include m.transition();
+
+    &:hover {
+        background-color: color.scale(v.$rojo-f1, $lightness: -10%);
+        color: v.$blanco;
+        transform: scale(1.05);
+    }
+}
