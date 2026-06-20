@@ -1,0 +1,121 @@
+@use 'sass:color';
+@use '../base/variables' as v;
+@use '../mixins' as m;
+
+// ===========================
+// ENCABEZADO DE PÁGINA
+// ===========================
+.page-header {
+    background-color: color.scale(v.$negro-carbono, $lightness: 4%);
+    border-bottom: 3px solid v.$rojo-f1;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+
+    h1 {
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: v.$gris-claro;
+        margin: 0;
+    }
+}
+
+// ===========================
+// SECCIÓN PILOTOS
+// ===========================
+.pilotos {
+    padding-bottom: 4rem;
+}
+
+// Título de cada equipo (ej: "McLaren", "Ferrari")
+// Ya no se usa en pilotos.html (se unificó todo en una sola grilla),
+// lo dejamos comentado por si se reutiliza en otra página más adelante
+// .equipo-titulo {
+//   font-weight: 700;
+//   text-transform: uppercase;
+//   letter-spacing: 0.5px;
+//   color: v.$rojo-f1;
+//   padding-bottom: 0.5rem;
+//   margin-bottom: 1.5rem;
+//   border-bottom: 1px solid v.$gris-oscuro;
+// }
+
+// ===========================
+// CARD DE PILOTO
+// ===========================
+.card-piloto {
+    background-color: v.$gris-oscuro;
+    border-radius: v.$radius;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .card-piloto-info {
+        padding: 1.25rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .equipo {
+        color: v.$rojo-f1;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .nacionalidad {
+        color: v.$gris-claro;
+        font-size: 0.85rem;
+        margin: 0;
+
+        i {
+            margin-right: 4px;
+        }
+    }
+}
+
+// ===========================
+// FOTO CUADRADA DEL PILOTO
+// ===========================
+.foto-piloto {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: v.$negro-carbono;
+    overflow: hidden;
+
+    img {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: bottom;
+        display: block;
+    }
+}
+
+.numero {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -50%) scaleY(2.9) scaleX(2.2);
+    font-family: v.$font-titulos;
+    font-weight: 900;
+    font-size: 7rem;
+    line-height: 1;
+    color: color.scale(v.$gris-claro, $alpha: -45%);
+    user-select: none;
+}
