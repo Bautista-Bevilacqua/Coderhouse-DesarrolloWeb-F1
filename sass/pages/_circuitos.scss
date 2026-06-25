@@ -1,0 +1,133 @@
+@use 'sass:color';
+@use '../base/variables' as v;
+@use '../mixins' as m;
+
+.circuitos {
+    padding-bottom: 5rem;
+}
+
+// ===========================
+// CARD DE CIRCUITO
+// ===========================
+.card-circuito {
+    background-color: v.$gris-oscuro;
+    border-radius: v.$radius;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(v.$blanco, 0.05);
+    @include m.transition(); // Controla la suavidad de la sombra y borde en el hover
+
+    // ===========================
+    // CONTENEDOR DE IMAGEN (TOP)
+    // ===========================
+    .circuito-img-contenedor {
+        position: relative;
+        width: 100%;
+        height: 200px; // Altura fija para que todas las cards queden simétricas
+        overflow: hidden;
+        background-color: v.$negro-carbono;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; // Corta la imagen proporcionalmente
+            object-position: center;
+            display: block;
+            @include m.transition(transform); // Usamos tu mixin para el zoom
+        }
+
+        // Etiqueta flotante (Urbano / Permanente)
+        .badge-tipo {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(v.$negro-carbono, 0.75);
+            color: v.$blanco;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            border: 1px solid rgba(v.$blanco, 0.15);
+            backdrop-filter: blur(4px); // Efecto esmerilado moderno
+            z-index: 2;
+        }
+    }
+
+    // ===========================
+    // CUERPO DE LA TARJETA
+    // ===========================
+    .card-circuito-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; // Empuja el contenido equitativamente si los textos varían
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .pais {
+            color: v.$gris-claro;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+
+            i {
+                color: v.$rojo-f1; // Icono de ubicación en rojo
+                margin-right: 4px;
+            }
+        }
+
+        .divisor-f1 {
+            width: 40px;
+            height: 3px;
+            background-color: v.$rojo-f1;
+            border: none;
+            opacity: 1;
+            margin: 0 0 1rem 0;
+        }
+
+        // Lista de especificaciones
+        .datos-tecnicos {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+
+            li {
+                color: v.$gris-claro;
+                padding: 0.4rem 0;
+                border-bottom: 1px solid rgba(v.$blanco, 0.03);
+
+                &:last-child {
+                    border-bottom: none; // Saca la línea al último elemento
+                }
+
+                strong {
+                    color: v.$blanco;
+                    font-family: v.$font-titulos;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    // ===========================
+    // EFECTO HOVER
+    // ===========================
+    &:hover {
+        border-color: rgba(v.$rojo-f1, 0.4);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+
+        // Hace el zoom suave en la foto usando tu mixin + velocidad
+        .circuito-img-contenedor img {
+            transform: scale(1.06);
+        }
+    }
+}
