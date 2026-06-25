@@ -1,0 +1,147 @@
+@use 'sass:color';
+@use '../base/variables' as v;
+@use '../mixins' as m;
+
+.contacto-seccion {
+    padding-bottom: 5rem;
+}
+
+.info-contacto-bloque {
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        color: v.$blanco;
+    }
+
+    .intro-p {
+        color: v.$gris-claro;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .divisor-f1 {
+        width: 60px;
+        height: 3px;
+        background-color: v.$rojo-f1;
+        border: none;
+        opacity: 1;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.item-contacto {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+
+    .icono-box {
+        width: 50px;
+        height: 50px;
+        background-color: v.$gris-oscuro;
+        border-radius: v.$radius;
+        border: 1px solid rgba(v.$blanco, 0.05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        color: v.$rojo-f1;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+        color: v.$gris-claro;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    p {
+        font-size: 1.05rem;
+        color: v.$blanco;
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 1rem;
+
+    a {
+        width: 45px;
+        height: 45px;
+        background-color: v.$gris-oscuro;
+        color: v.$blanco;
+        border-radius: 50%; // Redondos
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        border: 1px solid rgba(v.$blanco, 0.05);
+        @include m.transition();
+
+        &:hover {
+            background-color: v.$rojo-f1;
+            color: v.$blanco;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(v.$rojo-f1, 0.3);
+        }
+    }
+}
+
+.formulario-container {
+    background-color: v.$gris-oscuro;
+    padding: 2.5rem;
+    border-radius: v.$radius;
+    border: 1px solid rgba(v.$blanco, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.formulario-f1 {
+    .form-label {
+        font-family: v.$font-titulos;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: v.$gris-claro;
+        letter-spacing: 0.5px;
+    }
+
+    .form-control {
+        background-color: color.scale(v.$negro-carbono, $lightness: -2%);
+        border: 1px solid rgba(v.$blanco, 0.1);
+        border-radius: v.$radius;
+        color: v.$blanco;
+        padding: 0.75rem 1rem;
+        font-family: v.$font-texto;
+
+        @include m.transition(all);
+
+        &::placeholder {
+            color: color.scale(v.$gris-claro, $lightness: -30%);
+            font-size: 0.9rem;
+        }
+
+        &:focus {
+            background-color: color.scale(v.$negro-carbono, $lightness: -4%);
+            border-color: v.$rojo-f1;
+            color: v.$blanco;
+            box-shadow: 0 0 0 0.25rem rgba(v.$rojo-f1, 0.15);
+            outline: none;
+        }
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+}
