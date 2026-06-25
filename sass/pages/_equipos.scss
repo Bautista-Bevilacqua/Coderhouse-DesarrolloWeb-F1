@@ -1,0 +1,115 @@
+@use 'sass:color';
+@use '../base/variables' as v;
+@use '../mixins' as m;
+
+.equipos {
+    padding-bottom: 5rem;
+}
+
+// ===========================
+// CARD DE EQUIPO (CONTENEDOR)
+// ===========================
+.card-equipo {
+    background-color: v.$gris-oscuro;
+    border-radius: v.$radius;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(v.$blanco, 0.05);
+
+    // 1. Usamos tu mixin sin parámetros (toma 'all' por defecto)
+    // Esto suaviza el cambio de bordes y sombras en el hover
+    @include m.transition();
+
+    // ===========================
+    // VISTA POR DEFECTO (LOGO)
+    // ===========================
+    .logo-equipo {
+        width: 60%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // 2. Le pasamos 'transform' para que solo suavice el cambio de tamaño
+        @include m.transition(transform);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    // ===========================
+    // PANEL OCULTO (INFO EN HOVER)
+    // ===========================
+    .card-equipo-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: color.scale(v.$negro-carbono, $lightness: -2%);
+        padding: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        transform: translateY(101%);
+
+        // 3. Aplicamos tu mixin para el desplazamiento vertical
+        @include m.transition(transform);
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .divisor-f1 {
+            width: 50px;
+            height: 3px;
+            background-color: v.$rojo-f1;
+            border: none;
+            opacity: 1;
+            margin: 0 0 1.2rem 0;
+        }
+
+        .detalle {
+            font-size: 0.95rem;
+            color: v.$gris-claro;
+            margin-bottom: 0.5rem;
+
+            strong {
+                color: v.$blanco;
+                font-family: v.$font-titulos;
+                font-weight: 500;
+            }
+        }
+    }
+
+    // ===========================
+    // EFECTO HOVER
+    // ===========================
+    &:hover {
+        border-color: rgba(v.$rojo-f1, 0.4);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+        .card-equipo-info {
+            transform: translateY(0);
+        }
+
+        .logo-equipo {
+            transform: scale(3);
+        }
+    }
+}
